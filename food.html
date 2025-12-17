@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ZiyoCare — Food Delivery Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="brand">
+            <h1>ZiyoCare</h1>
+            <p>Food Delivery Service</p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="food.html">Food Delivery</a>
+            <a href="pill.html">Pill Delivery</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="card" style="max-width:700px;margin:auto">
+        <h2>Order Food</h2>
+        <form id="foodForm" onsubmit="event.preventDefault(); submitFood();">
+            <input type="text" id="meal" placeholder="Meal name (e.g., Dal, Rice, Soup)" required>
+            <input type="text" id="address" placeholder="Delivery address" required>
+            <input type="time" id="mealTime" required>
+            <button type="submit">Place Order</button>
+        </form>
+        <p id="foodMsg" class="muted"></p>
+    </div>
+
+    <div class="card">
+        <h3>Pending Food Deliveries</h3>
+        <ul id="deliveryList" class="list"></ul>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">Back to <a href="index.html">Home</a></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function submitFood(){
+    const meal=document.getElementById('meal').value;
+    const address=document.getElementById('address').value;
+    const time=document.getElementById('mealTime').value;
+    if(!meal||!address||!time){ alert('Please fill form'); return }
+    window.addDelivery({type:'Food',details:meal,time:time,address:address});
+    document.getElementById('foodMsg').textContent='Order placed ✓';
+    document.getElementById('foodForm').reset();
+}
+</script>
+</body>
+</html>

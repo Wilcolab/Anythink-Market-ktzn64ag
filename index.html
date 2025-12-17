@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ZiyoCare — Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="brand">
+            <h1>🩺 ZiyoCare</h1>
+            <p>Safe & Independent Living</p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="food.html">Food Delivery</a>
+            <a href="pill.html">Pill Delivery</a>
+            <a href="#" onclick="sendEmergency()" class="danger small">Emergency</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="grid">
+        <div class="card">
+            <h2>💊 Medications to take</h2>
+            <form id="medForm" onsubmit="event.preventDefault(); addMedication();">
+                <input type="text" id="medName" placeholder="Medication name" required>
+                <input type="time" id="medTime" required>
+                <button type="submit">Add Medication</button>
+            </form>
+            <ul id="medList" class="list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>📅 Appointments</h2>
+            <form id="apptForm" onsubmit="event.preventDefault(); addAppointment();">
+                <input type="text" id="apptTitle" placeholder="Title (e.g., Dr. Khan)" required>
+                <input type="datetime-local" id="apptTime" required>
+                <button type="submit">Add Appointment</button>
+            </form>
+            <ul id="apptList" class="list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>📦 Deliveries</h2>
+            <p><a href="food.html">Order Food</a> · <a href="pill.html">Request Pills</a></p>
+            <ul id="deliveryList" class="list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>🤝 Volunteer Visits</h2>
+            <form id="volForm" onsubmit="event.preventDefault(); addVolunteerVisit();">
+                <input type="text" id="volName" placeholder="Volunteer name or group" required>
+                <input type="date" id="volDate" required>
+                <button type="submit">Schedule Visit</button>
+            </form>
+            <ul id="volList" class="list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>⏱ Personal Reminders</h2>
+            <form id="remForm" onsubmit="event.preventDefault(); addReminder();">
+                <input type="text" id="remTitle" placeholder="Drink water / Exercise / Rest" required>
+                <input type="time" id="remTime" required>
+                <button type="submit">Add Reminder</button>
+            </form>
+            <ul id="remList" class="list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>📄 Medical Report (Quick analysis)</h2>
+            <input type="file" id="fileInput">
+            <button onclick="analyzeReport()">Analyze</button>
+            <div id="analysisResult"></div>
+        </div>
+    </section>
+
+    <section class="quick-actions">
+        <button class="danger large" onclick="sendEmergency()">🚨 Emergency Help</button>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>⚠️ This app does not replace a doctor — consult a healthcare professional for medical advice.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
